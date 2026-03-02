@@ -142,6 +142,9 @@ function findFullSwapCandidates(myShift) {
     const theirShifts = rota.filter((s) => s.worker === worker);
 
     const shiftsICanTake = theirShifts.filter((s) => {
+      if (s.date === myShift.date && s.start === myShift.start && s.end === myShift.end) {
+        return false;
+      }
       const theyCanTakeMine = hasEnoughRest(
         theirShifts.filter((x) => x.id !== s.id),
         myShift
