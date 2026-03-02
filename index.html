@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShiftSwap</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>ShiftSwap</h1>
+      <p class="tagline">Swap shifts with colleagues — 10hr rest guaranteed</p>
+    </header>
+
+    <main class="main">
+      <section class="section rota-section">
+        <h2>Rota</h2>
+        <div class="rota-actions">
+          <div class="input-group">
+            <label for="rota-input">Paste rota (CSV: date,start,end,worker) — shifts: 06:00–14:00 or 14:00–22:00</label>
+            <textarea id="rota-input" placeholder="2025-03-03,06:00,14:00,Alice&#10;2025-03-03,14:00,22:00,Bob&#10;2025-03-04,06:00,14:00,Charlie"></textarea>
+          </div>
+          <button id="load-rota" class="btn btn-primary">Load Rota</button>
+          <button id="sample-rota" class="btn btn-secondary">Load Sample</button>
+          <div id="error-msg" class="error-msg" style="display:none"></div>
+        </div>
+        <div id="rota-table-container" class="rota-table-container"></div>
+      </section>
+
+      <section class="section swap-section">
+        <h2>Request Swap</h2>
+        <div class="swap-flow">
+          <div class="step">
+            <label>1. Select your shift</label>
+            <select id="my-shift" class="select">
+              <option value="">— Choose shift —</option>
+            </select>
+          </div>
+          <div class="step">
+            <label>2. Swap type</label>
+            <div class="swap-type-options">
+              <label class="swap-type-option">
+                <input type="radio" name="swap-type" value="giveaway" checked>
+                <span>Give away</span> — Someone takes your shift, you get the time off
+              </label>
+              <label class="swap-type-option">
+                <input type="radio" name="swap-type" value="full">
+                <span>Full swap</span> — Exchange shifts with someone
+              </label>
+            </div>
+          </div>
+          <div class="step">
+            <label>3. Available candidates</label>
+            <p class="hint" id="candidates-hint">People with 10+ hours between shifts</p>
+            <div id="candidates-list" class="candidates-list"></div>
+          </div>
+          <div class="step">
+            <label>4. Confirm</label>
+            <div id="swap-confirm" class="swap-confirm"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Minimum 10 hours rest between shifts required for all swaps</p>
+    </footer>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

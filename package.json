@@ -1,0 +1,13 @@
+{
+  "name": "shift-swap",
+  "version": "1.0.0",
+  "description": "App for workers to swap shifts with 10-hour rest validation",
+  "type": "module",
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "start": "npx serve . -p 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}
