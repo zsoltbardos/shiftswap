@@ -145,6 +145,9 @@ function findFullSwapCandidates(myShift) {
       if (s.date === myShift.date && s.start === myShift.start && s.end === myShift.end) {
         return false;
       }
+      if (s.date === myShift.date && s.startMs < myShift.endMs && s.endMs > myShift.startMs) {
+        return false;
+      }
       const theyCanTakeMine = hasEnoughRest(
         theirShifts.filter((x) => x.id !== s.id),
         myShift
